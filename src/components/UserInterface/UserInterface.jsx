@@ -15,10 +15,15 @@ function reducer(state, action) {
       break;
     case "dataUpdate":
       return { ...state, coinsInfo: action.payload };
+<<<<<<< HEAD
 
     case "popUp-toggle":
       return { ...state, popupRef: !state.popupRef };
 
+=======
+    case "popUp-Toggle":
+      break;
+>>>>>>> 415999f12375d3313d3563988f114889e1aee462
     default:
       break;
   }
