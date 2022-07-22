@@ -1,33 +1,22 @@
-#container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-#appHeader {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  gap: 10px;
+#appHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+
 }
-.Exchange-container {
-  display: flex;
-  gap: 10px;
-}
-.popUp-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(128, 128, 128, 0.644);
-  opacity: 0;
-  pointer-events: "none";
+
+.Exchange-container{
+    display: flex;
+    gap: 10px;
 }

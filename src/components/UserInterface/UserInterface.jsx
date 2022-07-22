@@ -31,6 +31,7 @@ function reducer(state, action) {
     case "dataUpdate":
       console.log(state.coinsInfo, 'ppp')
       return { ...state, coinsInfo: action.payload };
+
     case "popUp-toggle":
       // console.log(state.popupRef, 'ooo')
       let copyRef = !state.popupRef;
@@ -59,10 +60,9 @@ function UserInterface() {
     });
     let data = await response.json();
 
-    console.log("data is", data);
     let output = {};
     for (const obj of data) {
-      output[obj.name.toLowerCase()] = { name: obj.name, price: obj.current_price, change24Per: Number(obj.price_change_percentage_24h).toFixed(5), src: obj.image, symbol: obj.symbol };
+      output[obj.name.toLowerCase()] = { name: obj.name, price: obj.current_price, change24Per: Number(obj.price_change_percentage_24h).toFixed(5), src: obj.image };
     }
 
     dispatch({ type: "dataUpdate", payload: output });
@@ -88,9 +88,6 @@ function UserInterface() {
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${state.portfoilio}</div>
       </div>
-      <button style={{ height: "50px", width: "50px" }} onClick={() => console.log("pingPong")}>
-        ping me!
-      </button>
 
       <div className="main-container">
         {state.coinsInfo ? (
