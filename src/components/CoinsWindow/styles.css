@@ -1,0 +1,8 @@
+#coinsWindow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+
+  /* border: 0.000001px dashed purple; */
+}

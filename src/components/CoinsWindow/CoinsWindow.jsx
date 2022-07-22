@@ -1,13 +1,14 @@
 import "./styles.css";
 import { useContext } from "react";
 import coinData from "../../contexts/coinData";
+import CoinCard from "../CoinCard/CoinCard";
 
 function CoinsWindow() {
   let coinDataContext = useContext(coinData);
 
   return (
     <>
-      <div className="coinsWindow">dasdasd{"getData()"}</div>
+      <div id="coinsWindow">{coinDataContext.state.coinsInfo ? Object.entries(coinDataContext.state.coinsInfo).map((ele) => <CoinCard coinInfo={ele} />) : null}</div>
     </>
   );
 }
