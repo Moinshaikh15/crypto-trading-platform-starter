@@ -5,7 +5,7 @@ import coinData from "../../contexts/coinData";
 function CoinCard(props) {
   let coinDataContext = useContext(coinData);
   return (
-    <div className="coinCard" onClick={() => coinDataContext.togglePopup(coinDataContext.popup)}>
+    <div className="coinCard" onClick={() => coinDataContext.dispatch({ type: 'popUp-toggle' })}>
       {console.log("popup from card is", coinDataContext.popup)}
       <img className="coinCardThumb" src={props.coinInfo[1].src} alt={`${props.coinInfo[1].name} Icon`} />
       <div className="coinCardInfo">

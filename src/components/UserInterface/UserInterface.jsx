@@ -1,5 +1,5 @@
 import "./styles.css";
-import { useReducer, useEffect, useState } from "react";
+import { useReducer, useEffect } from "react";
 import coinData from "../../contexts/coinData";
 import CoinsWindow from "../CoinsWindow/CoinsWindow";
 import CurrentHolding from "../Exchange/CurrentHolding";
@@ -15,6 +15,10 @@ function reducer(state, action) {
       break;
     case "dataUpdate":
       return { ...state, coinsInfo: action.payload };
+
+    case "popUp-toggle":
+      return { ...state, popupRef: !state.popupRef };
+
     default:
       break;
   }
@@ -22,7 +26,6 @@ function reducer(state, action) {
 
 function UserInterface() {
   let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false });
-  let [popup, popupToggle] = useState(false);
 
   async function getData() {
     console.log("ping");
@@ -50,9 +53,6 @@ function UserInterface() {
   }, []);
 
   console.log(state.coinsInfo);
-  function togglePopup(status) {
-    !status ? popupToggle(true) : popupToggle(false);
-  }
 
   return (
     <div id="container">
@@ -62,19 +62,18 @@ function UserInterface() {
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
       </div>
-      <button style={{ height: "50px", width: "50px" }} onClick={() => console.log("pingPong")}></button>
 
       <div className="main-container">
         {state.coinsInfo ? (
-          <coinData.Provider value={{ state, dispatch, popup, togglePopup }}>
+          <coinData.Provider value={{ state, dispatch }}>
             <CoinsWindow />
 
             <div className="Exchange-container">
               <CurrentHolding />
               <Transaction />
             </div>
-            <div className="popUp-container">
-              <Popup />
+            <div className={state.popupRef?'popUp-container, show-popup':"popUp-container"}>
+              <Popup  />
             </div>
           </coinData.Provider>
         ) : (
