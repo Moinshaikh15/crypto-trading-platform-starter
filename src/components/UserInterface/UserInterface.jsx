@@ -7,25 +7,51 @@ import Transaction from "../Exchange/Transaction";
 import Popup from "../Popup/Popup";
 
 const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2C%20ethereum%2C%20cardano%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h";
+
+
+
 function reducer(state, action) {
   switch (action.type) {
     case "buy":
-      break;
+      let newWallet = state.wallet
+      newWallet -= (action.payload.currentSelected.price * action.payload.count)
+      let newPorfolio = state.portfoilio
+      newPorfolio += (action.payload.currentSelected.price * action.payload.count)
+      let copyArr = state.transactionArr
+      copyArr.push(action.payload)
+
+      let currArrCopy = state.currentHoldingArr
+      currArrCopy.push(action.payload)
+
+      return { ...state, transactionArr: copyArr, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio }
+
+
     case "sell":
       break;
     case "dataUpdate":
+      console.log(state.coinsInfo, 'ppp')
       return { ...state, coinsInfo: action.payload };
 
     case "popUp-toggle":
-      return { ...state, popupRef: !state.popupRef };
+      // console.log(state.popupRef, 'ooo')
+      let copyRef = !state.popupRef;
+      return { ...state, popupRef: copyRef };
+
+    case 'UpdateSelcted':
+      let copySelected = action.payload;
+      return { ...state, currentSelected: copySelected };
 
     default:
-      break;
+      return { ...state }
   }
 }
 
+
+
+
+
 function UserInterface() {
-  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false });
+  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: 0, coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false, currentSelected: null, transactionArr: [], currentHoldingArr: [] });
 
   async function getData() {
     console.log("ping");
@@ -52,7 +78,7 @@ function UserInterface() {
     };
   }, []);
 
-  console.log(state.coinsInfo);
+  // console.log(state.coinsInfo);
 
   return (
     <div id="container">
@@ -60,7 +86,7 @@ function UserInterface() {
         <div id="header1">Earn some virtual money 💰</div>
         <div id="header2">To buy virtual food</div>
         <div id="header3">Wallet: ${state.wallet}</div>
-        <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
+        <div id="header4">Portfolio Value: ${state.portfoilio}</div>
       </div>
 
       <div className="main-container">
@@ -72,8 +98,8 @@ function UserInterface() {
               <CurrentHolding />
               <Transaction />
             </div>
-            <div className={state.popupRef?'popUp-container, show-popup':"popUp-container"}>
-              <Popup  />
+            <div className={state.popupRef === true ? 'popUp-container, show-popup' : "popUp-container"}>
+              <Popup />
             </div>
           </coinData.Provider>
         ) : (

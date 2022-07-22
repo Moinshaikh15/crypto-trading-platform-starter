@@ -1,9 +1,14 @@
+import { useContext } from "react"
+import coinData from "../../contexts/coinData"
 
 
-export default function CurrHoldingCard() {
+export default function CurrHoldingCard(props) {
+    let { state } = useContext(coinData)
+    let name = state.coinsInfo[props.name.toLowerCase()]
+    let profitLoss = name.price - props.price;
     return <div className="curr-HoldingCard">
-        <h5>CoinTitle:count</h5>
-        <p>Total Paid:$20 , Current Value:$20.09</p>
-        <p>P/L:$0.09</p>
+        <h5>{props.name}:{props.count}</h5>
+        <p>Total Paid:${props.price * props.count} , Current Value:{name.price}</p>
+        <p style={{color:profitLoss<0?'red':'green'}}>P/L:${profitLoss}</p>
     </div>
 }

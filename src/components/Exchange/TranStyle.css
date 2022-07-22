@@ -1,6 +1,6 @@
 .Tarnsaction-container {
     border: 2px solid;
-    width: 400px;
+    width: 500px;
     height: 400px;
     padding: 20px;
     display: flex;
@@ -11,7 +11,7 @@
 
 .tran-Card {
     box-shadow: 1px 1px 4px 1px gray;
-    width: 300px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     gap: 5px;
