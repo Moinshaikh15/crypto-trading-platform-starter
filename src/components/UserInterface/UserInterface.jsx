@@ -15,26 +15,14 @@ function reducer(state, action) {
       break;
     case "dataUpdate":
       return { ...state, coinsInfo: action.payload };
-<<<<<<< HEAD
-=======
-
-    case "popUp-toggle":
-      console.log('yee')
-      return { ...state, popupRef: !state.popupRef };
-
->>>>>>> 41a483d8e47f4612d4b5c60f75667b73cb28c6f4
     default:
       break;
   }
 }
 
 function UserInterface() {
-<<<<<<< HEAD
-  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false });
-  let [popup, popupToggle] = useState(false);
-=======
   let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false });
->>>>>>> 41a483d8e47f4612d4b5c60f75667b73cb28c6f4
+  let [popup, popupToggle] = useState(false);
 
   async function getData() {
     console.log("ping");
@@ -74,25 +62,19 @@ function UserInterface() {
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
       </div>
-
       <button style={{ height: "50px", width: "50px" }} onClick={() => console.log("pingPong")}></button>
 
       <div className="main-container">
         {state.coinsInfo ? (
-          <coinData.Provider value={{ state, dispatch }}>
+          <coinData.Provider value={{ state, dispatch, popup, togglePopup }}>
             <CoinsWindow />
 
             <div className="Exchange-container">
               <CurrentHolding />
               <Transaction />
             </div>
-<<<<<<< HEAD
             <div className="popUp-container">
               <Popup />
-=======
-            <div className={state.popupRef?'show-popup':"popUp-container"}>
-              <Popup  />
->>>>>>> 41a483d8e47f4612d4b5c60f75667b73cb28c6f4
             </div>
           </coinData.Provider>
         ) : (
