@@ -1,5 +1,5 @@
 import "./styles.css";
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useRef } from "react";
 import coinData from "../../contexts/coinData";
 import CoinsWindow from "../CoinsWindow/CoinsWindow";
 import CurrentHolding from "../Exchange/CurrentHolding";
@@ -22,6 +22,7 @@ function reducer(state, action) {
 
 function UserInterface() {
   let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false });
+  let popupRef = useRef(null);
 
   async function getData() {
     console.log("ping");
@@ -62,13 +63,13 @@ function UserInterface() {
       <div className="main-container">
         {state.coinsInfo ? (
           <coinData.Provider value={{ state, dispatch }}>
-            <CoinsWindow />
+            <CoinsWindow popupRef={popupRef} />
 
             <div className="Exchange-container">
               <CurrentHolding />
               <Transaction />
             </div>
-            <Popup />
+            <Popup ref={popupRef} />
           </coinData.Provider>
         ) : (
           <div>"Fetching..."</div>
