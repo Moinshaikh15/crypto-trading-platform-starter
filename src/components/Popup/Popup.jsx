@@ -8,7 +8,9 @@ function Popup(props) {
 
   return (
     <div className="pop-up">
-      <h4>Buy Bitcoin</h4>
+      <div className="header">
+        <h4>Buy Bitcoin</h4>
+      </div>
       <p>current Price:$50</p>
       <input type="text" name="input" id="input" /> <label htmlFor="input">Max</label>
       <div>
@@ -17,7 +19,7 @@ function Popup(props) {
         <input type="radio" name="radio-btn" id="btn2" />
         <label htmlFor="btn2">Sell</label>
       </div>
-      <button onClick={()=> coinDataContext.dispatch({type:'popUp-toggle'})}>Buy</button>
+      <button onClick={() => coinDataContext.dispatch({ type: 'popUp-toggle' })}>Buy</button>
     </div>
   );
 }
