@@ -1,0 +1,19 @@
+.Tarnsaction-container{
+    border: 2px solid;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+.tran-Card{
+    box-shadow: 2px 2px 4px 3px gray;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}

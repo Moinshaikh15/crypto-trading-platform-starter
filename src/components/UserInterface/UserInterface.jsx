@@ -2,7 +2,8 @@ import "./styles.css";
 import { useReducer } from "react";
 import coinData from "../../contexts/coinData";
 import CoinsWindow from "../CoinsWindow/CoinsWindow";
-
+import CurruntHolding from "../Exchange/CurrentHolding";
+import Transaction from "../Exchange/Transaction";
 function reducer(state, action) {
   switch (action.type) {
     case "buy":
@@ -22,13 +23,31 @@ function UserInterface() {
         <div id="header2">To buy virtual food</div>
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
-        {state.coinInfo ? (
-          <div>"Fetching..."</div>
-        ) : (
-          <coinData.Provider value={{ state, dispatch }}>
-            <CoinsWindow />
-          </coinData.Provider>
-        )}
+
+        <div className="main-container">
+
+
+          {state.coinInfo ? (
+            <div>"Fetching..."</div>
+          ) : (
+            <coinData.Provider value={{ state, dispatch }}>
+              <CoinsWindow />
+
+              <div className="Exchange-container">
+                <CurruntHolding />
+                <Transaction />
+              </div>
+
+            </coinData.Provider>
+          )}
+
+
+
+
+
+
+
+        </div>
       </div>
     </div>
   );
