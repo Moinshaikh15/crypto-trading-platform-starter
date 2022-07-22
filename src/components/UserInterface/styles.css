@@ -1,48 +1,33 @@
-#container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-#appHeader{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 10px;
-
+#appHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
 }
-
-.Exchange-container{
-    display: flex;
-    gap: 10px;
+.Exchange-container {
+  display: flex;
+  gap: 10px;
 }
-.pop-up{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    border: 2px solid;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: white;
-}
-.pop-up h4{
-    background-color: black;
-    color: white;
-}
-.popUp-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(128, 128, 128, 0.644);
-    opacity: 0;
-
+.popUp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.644);
+  opacity: 0;
+  pointer-events: "none";
 }

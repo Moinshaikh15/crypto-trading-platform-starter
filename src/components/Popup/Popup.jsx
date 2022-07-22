@@ -1,14 +1,12 @@
 import "./styles.css";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 import coinData from "../../contexts/coinData";
 
-function Popup(props) {
+function Popup() {
   let coinDataContext = useContext(coinData);
-  let popupRef = useRef(null);
 
   return (
-    <div ref={popupRef} className="pop-up">
-      {coinDataContext.dispatch({ type: "popUp-toggle", payLoad: popupRef })}
+    <div className="pop-up" style={{ opacity: coinDataContext.popup ? "100%" : "0" }}>
       <h4>Buy Bitcoin</h4>
       <p>current Price:$50</p>
       <input type="text" name="input" id="input" /> <label htmlFor="input">Max</label>
