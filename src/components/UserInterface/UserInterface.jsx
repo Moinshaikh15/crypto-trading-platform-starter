@@ -73,7 +73,7 @@ function UserInterface() {
               <CurrentHolding />
               <Transaction />
             </div>
-            <div className={state.popupRef?'popUp-container, show-popup':"popUp-container"}>
+            <div className={state.popupRef?'show-popup':"popUp-container"}>
               <Popup  />
             </div>
           </coinData.Provider>
