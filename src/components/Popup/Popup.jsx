@@ -1,10 +1,9 @@
 import "./styles.css";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 import coinData from "../../contexts/coinData";
 
-function Popup(props) {
+function Popup() {
   let coinDataContext = useContext(coinData);
-  let popupRef = useRef(null);
 
   return (
     <div className="pop-up">
