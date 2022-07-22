@@ -2,7 +2,7 @@ import "./styles.css";
 import { useReducer, useEffect } from "react";
 import coinData from "../../contexts/coinData";
 import CoinsWindow from "../CoinsWindow/CoinsWindow";
-import CurruntHolding from "../Exchange/CurrentHolding";
+import CurrentHolding from "../Exchange/CurrentHolding";
 import Transaction from "../Exchange/Transaction";
 
 const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2C%20ethereum%2C%20cardano%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h";
@@ -58,12 +58,12 @@ function UserInterface() {
         <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
       </div>
       <div className="main-container">
-        {state.coinInfo ? (
+        {state.coinsInfo ? (
           <coinData.Provider value={{ state, dispatch }}>
             <CoinsWindow />
 
             <div className="Exchange-container">
-              <CurruntHolding />
+              <CurrentHolding />
               <Transaction />
             </div>
           </coinData.Provider>

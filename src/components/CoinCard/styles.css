@@ -1,0 +1,23 @@
+.coinCard {
+  height: 80px;
+  width: 200px;
+
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 1px rgba(148, 148, 148, 0.55);
+}
+.coinCardThumb {
+  height: 50px;
+  width: 50px;
+}
+
+.coinCardInfo {
+  padding-left: 5px;
+}
+.coinCardPrice {
+}
+.coinCardName {
+}
+.coinCardChange {
+}
