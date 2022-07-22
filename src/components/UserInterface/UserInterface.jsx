@@ -15,6 +15,10 @@ function reducer(state, action) {
       break;
     case "dataUpdate":
       return { ...state, coinsInfo: action.payload };
+
+    case 'popUp-toggle':
+      return { ...state, popupRef: state.popupRef }
+
     default:
       break;
   }
@@ -70,9 +74,9 @@ function UserInterface() {
               <Transaction />
             </div>
             <div className="popUp-container">
-            <Popup ref={popupRef} />
+              <Popup ref={popupRef} />
             </div>
-           
+
           </coinData.Provider>
         ) : (
           <div>"Fetching..."</div>
