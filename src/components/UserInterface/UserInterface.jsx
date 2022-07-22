@@ -19,36 +19,36 @@ function UserInterface() {
   return (
     <div id="container">
       <div id="appHeader">
-        <div id="header1">Earn some virtual money</div>
+        <div id="header1">Earn some virtual money 💰</div>
         <div id="header2">To buy virtual food</div>
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
-
-        <div className="main-container">
-
-
-          {state.coinInfo ? (
-            <div>"Fetching..."</div>
-          ) : (
-            <coinData.Provider value={{ state, dispatch }}>
-              <CoinsWindow />
+      </div>
+      <div className="main-container">
 
 
-              <div className="Exchange-container">
-                <CurruntHolding />
-                <Transaction />
-              </div>
-
-            </coinData.Provider>
-          )}
+        {state.coinInfo ? (
+          <div>"Fetching..."</div>
+        ) : (
+          <coinData.Provider value={{ state, dispatch }}>
+            <CoinsWindow />
 
 
+            <div className="Exchange-container">
+              <CurruntHolding />
+              <Transaction />
+            </div>
+
+          </coinData.Provider>
+        )}
 
 
 
 
 
-        </div>
+
+
+
       </div>
     </div>
   );
