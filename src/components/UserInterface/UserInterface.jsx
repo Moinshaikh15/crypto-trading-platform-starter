@@ -2,6 +2,8 @@ import "./styles.css";
 import { useReducer, useEffect } from "react";
 import coinData from "../../contexts/coinData";
 import CoinsWindow from "../CoinsWindow/CoinsWindow";
+import CurruntHolding from "../Exchange/CurrentHolding";
+import Transaction from "../Exchange/Transaction";
 
 const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2C%20ethereum%2C%20cardano%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h";
 function reducer(state, action) {
@@ -50,13 +52,20 @@ function UserInterface() {
   return (
     <div id="container">
       <div id="appHeader">
-        <div id="header1">Earn some virtual money</div>
+        <div id="header1">Earn some virtual money 💰</div>
         <div id="header2">To buy virtual food</div>
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
-        {state.coinsInfo.length > 0 ? (
+      </div>
+      <div className="main-container">
+        {state.coinInfo ? (
           <coinData.Provider value={{ state, dispatch }}>
             <CoinsWindow />
+
+            <div className="Exchange-container">
+              <CurruntHolding />
+              <Transaction />
+            </div>
           </coinData.Provider>
         ) : (
           <div>"Fetching..."</div>
