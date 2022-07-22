@@ -1,6 +1,6 @@
 import './currStyle.css'
 import CurrHoldingCard from "./CurrCard"
-export default function CurruntHolding() {
+export default function CurrentHolding() {
 
     return <div className="currholding-container">
         <h2>Current Holdings</h2>

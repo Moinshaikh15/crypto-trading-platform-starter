@@ -2,7 +2,7 @@ import "./styles.css";
 import { useReducer, useEffect } from "react";
 import coinData from "../../contexts/coinData";
 import CoinsWindow from "../CoinsWindow/CoinsWindow";
-import CurruntHolding from "../Exchange/CurrentHolding";
+import CurrentHolding from "../Exchange/CurrentHolding";
 import Transaction from "../Exchange/Transaction";
 
 const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2C%20ethereum%2C%20cardano%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h";
@@ -57,13 +57,28 @@ function UserInterface() {
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
       </div>
+
+
+
       <div className="main-container">
-        {state.coinInfo ? (
+        {state.coinsInfo ? (
           <coinData.Provider value={{ state, dispatch }}>
+
+            <div className="pop-up">
+              <h4>Buy Bitcoin</h4>
+              <p>current Price:$50</p>
+              <input type="text" name="input" id="input"/> <label htmlFor="input">Max</label>
+              <div>
+                <input type="radio" name="radio-btn" id="btn1" /><label htmlFor="btn1">Buy</label>
+                <input type="radio" name="radio-btn" id="btn2" /><label htmlFor="btn2">Sell</label>
+              </div>
+              <button>Buy</button>
+            </div>
+
             <CoinsWindow />
 
             <div className="Exchange-container">
-              <CurruntHolding />
+              <CurrentHolding />
               <Transaction />
             </div>
           </coinData.Provider>
@@ -71,6 +86,9 @@ function UserInterface() {
           <div>"Fetching..."</div>
         )}
       </div>
+
+
+
     </div>
   );
 }

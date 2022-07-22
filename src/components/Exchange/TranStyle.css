@@ -24,11 +24,12 @@
 
 .bar {
     width: 14px;
-    height: 80px;
+    height: 100%;
     background-color: green;
     position: absolute;
     left: 0;
     top: 0;
+    letter-spacing: 2px;
 
 }
 
