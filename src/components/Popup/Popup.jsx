@@ -7,8 +7,7 @@ function Popup(props) {
   let popupRef = useRef(null);
 
   return (
-    <div ref={popupRef} className="pop-up">
-      {coinDataContext.dispatch({ type: "popUp-toggle", payLoad: popupRef })}
+    <div className="pop-up">
       <h4>Buy Bitcoin</h4>
       <p>current Price:$50</p>
       <input type="text" name="input" id="input" /> <label htmlFor="input">Max</label>

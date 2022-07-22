@@ -17,7 +17,8 @@ function reducer(state, action) {
       return { ...state, coinsInfo: action.payload };
 
     case "popUp-toggle":
-      return { ...state, popupRef: state.popupRef };
+      console.log('yee')
+      return { ...state, popupRef: !state.popupRef };
 
     default:
       break;
@@ -25,7 +26,7 @@ function reducer(state, action) {
 }
 
 function UserInterface() {
-  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: popupRef });
+  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false });
 
   async function getData() {
     console.log("ping");
@@ -66,14 +67,14 @@ function UserInterface() {
       <div className="main-container">
         {state.coinsInfo ? (
           <coinData.Provider value={{ state, dispatch }}>
-            <CoinsWindow popupRef={popupRef} />
+            <CoinsWindow />
 
             <div className="Exchange-container">
               <CurrentHolding />
               <Transaction />
             </div>
-            <div className="popUp-container">
-              <Popup ref={popupRef} />
+            <div className={state.popupRef?'popUp-container, show-popup':"popUp-container"}>
+              <Popup  />
             </div>
           </coinData.Provider>
         ) : (
