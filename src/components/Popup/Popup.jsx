@@ -17,7 +17,7 @@ function Popup(props) {
         <input type="radio" name="radio-btn" id="btn2" />
         <label htmlFor="btn2">Sell</label>
       </div>
-      <button>Buy</button>
+      <button onClick={()=> coinDataContext.dispatch({type:'popUp-toggle'})}>Buy</button>
     </div>
   );
 }
