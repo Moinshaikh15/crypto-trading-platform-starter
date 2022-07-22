@@ -1,5 +1,5 @@
 import "./styles.css";
-import { useReducer, useEffect, useRef } from "react";
+import { useReducer, useEffect } from "react";
 import coinData from "../../contexts/coinData";
 import CoinsWindow from "../CoinsWindow/CoinsWindow";
 import CurrentHolding from "../Exchange/CurrentHolding";
@@ -15,13 +15,13 @@ function reducer(state, action) {
       break;
     case "dataUpdate":
       return { ...state, coinsInfo: action.payload };
+
     default:
       break;
   }
 }
 
 function UserInterface() {
-  let popupRef = useRef(null);
   let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: popupRef });
 
   async function getData() {
@@ -70,9 +70,8 @@ function UserInterface() {
               <Transaction />
             </div>
             <div className="popUp-container">
-            <Popup ref={popupRef} />
+              <Popup />
             </div>
-           
           </coinData.Provider>
         ) : (
           <div>"Fetching..."</div>
