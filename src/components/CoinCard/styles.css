@@ -1,6 +1,7 @@
 .coinCard {
   height: 80px;
   width: 200px;
+  padding: 5px;
 
   display: flex;
   align-items: center;
