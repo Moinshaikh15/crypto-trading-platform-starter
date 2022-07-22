@@ -33,6 +33,7 @@ function UserInterface() {
             <coinData.Provider value={{ state, dispatch }}>
               <CoinsWindow />
 
+
               <div className="Exchange-container">
                 <CurruntHolding />
                 <Transaction />

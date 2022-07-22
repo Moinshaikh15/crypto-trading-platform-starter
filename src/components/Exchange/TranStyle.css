@@ -1,4 +1,4 @@
-.Tarnsaction-container{
+.Tarnsaction-container {
     border: 2px solid;
     width: 400px;
     height: 400px;
@@ -8,12 +8,32 @@
     gap: 10px;
 
 }
-.tran-Card{
-    box-shadow: 2px 2px 4px 3px gray;
+
+.tran-Card {
+    box-shadow: 1px 1px 4px 1px gray;
     width: 300px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     padding: 5px;
     border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.bar {
+    width: 14px;
+    height: 80px;
+    background-color: green;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+}
+
+.bar p {
+    transform: rotate(90deg);
+    color: white;
+    text-align: center;
 }

@@ -11,7 +11,7 @@
 
 
 .curr-HoldingCard {
-    box-shadow: 2px 2px 4px 3px gray;
+    box-shadow: 1px 1px 4px 1px gray;
     width: 300px;
     display: flex;
     flex-direction: column;
