@@ -18,6 +18,7 @@
   display: flex;
   gap: 10px;
 }
+<<<<<<< HEAD
 .popUp-container {
   display: flex;
   justify-content: center;
@@ -31,3 +32,5 @@
   opacity: 0;
   pointer-events: "none";
 }
+=======
+>>>>>>> 41a483d8e47f4612d4b5c60f75667b73cb28c6f4
