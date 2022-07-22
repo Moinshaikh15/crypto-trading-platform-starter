@@ -15,6 +15,8 @@ function reducer(state, action) {
       break;
     case "dataUpdate":
       return { ...state, coinsInfo: action.payload };
+    case "popUp-Toggle":
+      break;
     default:
       break;
   }
