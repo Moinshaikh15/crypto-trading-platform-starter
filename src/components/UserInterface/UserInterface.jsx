@@ -64,7 +64,9 @@ function UserInterface() {
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${"currentValueOfCoinsIHave"}</div>
       </div>
-      <button style={{ height: "50px", width: "50px" }} onClick={() => console.log("pingPong")}></button>
+      <button style={{ height: "50px", width: "50px" }} onClick={() => console.log("pingPong")}>
+        ping me!
+      </button>
 
       <div className="main-container">
         {state.coinsInfo ? (
