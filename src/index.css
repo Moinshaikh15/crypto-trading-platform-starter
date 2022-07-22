@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Open+Sans&family=Poppins&family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Open+Sans&family=Poppins&family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kelly+Slab&family=Squada+One&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   display: flex;
   justify-content: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }

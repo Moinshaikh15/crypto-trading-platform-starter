@@ -15,10 +15,8 @@ function reducer(state, action) {
       break;
     case "dataUpdate":
       return { ...state, coinsInfo: action.payload };
-
     case "popUp-toggle":
       return { ...state, popupRef: !state.popupRef };
-
     default:
       break;
   }
@@ -34,9 +32,10 @@ function UserInterface() {
     });
     let data = await response.json();
 
+    console.log("data is", data);
     let output = {};
     for (const obj of data) {
-      output[obj.name.toLowerCase()] = { name: obj.name, price: obj.current_price, change24Per: Number(obj.price_change_percentage_24h).toFixed(5), src: obj.image };
+      output[obj.name.toLowerCase()] = { name: obj.name, price: obj.current_price, change24Per: Number(obj.price_change_percentage_24h).toFixed(5), src: obj.image, symbol: obj.symbol };
     }
 
     dispatch({ type: "dataUpdate", payload: output });

@@ -4,7 +4,6 @@ import coinData from "../../contexts/coinData";
 
 function Popup(props) {
   let coinDataContext = useContext(coinData);
-  let popupRef = useRef(null);
 
   return (
     <div className="pop-up">

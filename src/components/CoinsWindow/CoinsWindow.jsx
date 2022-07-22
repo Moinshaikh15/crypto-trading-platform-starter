@@ -8,7 +8,7 @@ function CoinsWindow(props) {
 
   return (
     <>
-      <div id="coinsWindow">{coinDataContext.state.coinsInfo ? Object.entries(coinDataContext.state.coinsInfo).map((ele) => <CoinCard coinInfo={ele} />) : null}</div>
+      <div id="coinsWindow">{coinDataContext.state.coinsInfo ? Object.entries(coinDataContext.state.coinsInfo).map((ele, idx) => <CoinCard coinInfo={ele} index={idx} />) : null}</div>
     </>
   );
 }
