@@ -21,8 +21,8 @@ function reducer(state, action) {
 }
 
 function UserInterface() {
-  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false });
   let popupRef = useRef(null);
+  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: [], coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: popupRef });
 
   async function getData() {
     console.log("ping");
