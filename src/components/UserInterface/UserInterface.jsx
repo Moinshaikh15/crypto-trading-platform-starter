@@ -68,7 +68,11 @@ function UserInterface() {
               <CurrentHolding />
               <Transaction />
             </div>
-            <Popup />
+
+            <div className="popUp-container">
+              <Popup />
+            </div>
+
           </coinData.Provider>
         ) : (
           <div>"Fetching..."</div>

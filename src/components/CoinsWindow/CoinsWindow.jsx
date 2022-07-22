@@ -4,11 +4,11 @@ import coinData from "../../contexts/coinData";
 import CoinCard from "../CoinCard/CoinCard";
 
 function CoinsWindow() {
-  let coinDataContext = useContext(coinData);
+  let { state, dispatch } = useContext(coinData);
 
   return (
     <>
-      <div id="coinsWindow">{coinDataContext.state.coinsInfo ? Object.entries(coinDataContext.state.coinsInfo).map((ele) => <CoinCard coinInfo={ele} />) : null}</div>
+      <div id="coinsWindow">{coinDataContext.state.coinsInfo ? Object.entries(coinDataContext.state.coinsInfo).map((ele) => <CoinCard coinInfo={ele} onclick={() => dispatch()} />) : null}</div>
     </>
   );
 }
