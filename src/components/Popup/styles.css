@@ -1,13 +1,21 @@
-.pop-up {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  border: 2px solid;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: white;
+.pop-up{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    padding-top: 30px;
 }
-.pop-up h4 {
-  background-color: black;
-  color: white;
+.pop-up .header{
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    width: 100%;
+    padding: 10px;
 }
