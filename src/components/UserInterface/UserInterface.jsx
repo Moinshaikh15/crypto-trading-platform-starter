@@ -96,7 +96,7 @@ function UserInterface() {
             </div>
           </coinData.Provider>
         ) : (
-          <div>"Fetching..."</div>
+          <div id="loadingScreen">"Fetching..."</div>
         )}
       </div>
     </div>
