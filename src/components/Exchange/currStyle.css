@@ -1,21 +1,23 @@
 .currholding-container {
-    border: 2px solid;
-    width: 500px;
-    height: 400px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  width: 495px;
+  height: 400px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #171c26;
 
+  color: whitesmoke;
 }
 
-
 .curr-HoldingCard {
-    box-shadow: 1px 1px 4px 1px gray;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-    border-radius: 5px;
+  box-shadow: 1px 1px 4px 1px gray;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
 }

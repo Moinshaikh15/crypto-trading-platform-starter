@@ -2,21 +2,34 @@
   position: relative;
   display: flex;
   height: 220px;
-  width: 200px;
+  width: 245px;
   padding: 5px;
 
   display: flex;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 1px 1px 2px 1px rgba(148, 148, 148, 0.55);
   cursor: pointer;
 }
-.coinCardThumb {
+
+.outlineSymbol {
   position: absolute;
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   top: 13px;
   left: 13px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 9001px;
+  /* background-color: rgba(245, 245, 245, 0.346); */
+  background-color: #000000;
+}
+.coinCardThumb {
+  height: 45px;
+  width: 45px;
 }
 
 .coinCardInfo {
@@ -39,14 +52,17 @@
   font-size: 31px;
   font-family: "Black Ops One";
   font-weight: 700;
+  transform: scale(1, 1.3);
 }
 .coinCardName {
   position: absolute;
-  top: 75px;
+  top: 95px;
   left: 14px;
-  font-size: 21px;
+  font-size: 23px;
   font-family: "Squada One";
   font-weight: 700;
+  letter-spacing: 1px;
+  color: rgb(26, 25, 25);
 }
 .coinCardChange {
   font-size: 20px;
@@ -55,7 +71,7 @@
 }
 
 #coinCard1 {
-  background-color: #fbf4c8ba;
+  background: linear-gradient(145deg, rgba(69, 94, 254, 1) 0%, rgba(41, 150, 254, 1) 48%, rgba(9, 202, 254, 1) 100%);
 }
 #coinCard1 .coinCardChange {
   position: absolute;
@@ -68,7 +84,7 @@
 }
 #coinCard1 .coinCardName {
   /* font-size: 33px; */
-  color: #f0820d;
+  /* color: #f0820d; */
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.201);
 }
 #coinCard1 .coinCardSymbol {
@@ -76,7 +92,7 @@
 }
 
 #coinCard2 {
-  background-color: #c3f1f5cd;
+  background: linear-gradient(145deg, rgba(81, 34, 127, 1) 0%, rgba(107, 70, 146, 1) 48%, rgba(131, 100, 163, 1) 100%);
 }
 #coinCard2 .coinCardChange {
   position: absolute;
@@ -88,7 +104,7 @@
   background-color: #a8fbd0;
 }
 #coinCard2 .coinCardName {
-  color: #3f7bc5;
+  /* color: #3f7bc5; */
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.201);
 }
 #coinCard2 .coinCardSymbol {
@@ -96,7 +112,7 @@
 }
 
 #coinCard3 {
-  background-color: #f9d1ffd5;
+  background: linear-gradient(145deg, rgba(238, 112, 158, 1) 0%, rgba(236, 124, 133, 1) 48%, rgba(236, 139, 107, 1) 100%);
 }
 #coinCard3 .coinCardChange {
   position: absolute;
@@ -109,7 +125,7 @@
 }
 #coinCard3 .coinCardName {
   /* font-size: 22px; */
-  color: hwb(292 36% 24%);
+  /* color: hwb(292 36% 24%); */
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.201);
 }
 #coinCard3 .coinCardSymbol {
@@ -121,7 +137,7 @@
 }
 
 #coinCard4 {
-  background-color: #ffd5dadb;
+  background: linear-gradient(145deg, rgba(25, 90, 125, 1) 0%, rgba(72, 145, 159, 1) 48%, rgba(119, 198, 192, 1) 100%);
 }
 #coinCard4 .coinCardChange {
   position: absolute;
@@ -134,7 +150,7 @@
 }
 #coinCard4 .coinCardName {
   /* font-size: 35px; */
-  color: hsl(344, 97%, 70%);
+  /* color: hsl(344, 97%, 70%); */
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.29);
 }
 #coinCard4 .coinCardSymbol {

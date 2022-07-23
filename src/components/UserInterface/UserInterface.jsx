@@ -8,28 +8,25 @@ import Popup from "../Popup/Popup";
 
 const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2C%20ethereum%2C%20cardano%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h";
 
-
-
 function reducer(state, action) {
   switch (action.type) {
     case "buy":
-      let newWallet = state.wallet
-      newWallet -= (action.payload.currentSelected.price * action.payload.count)
-      let newPorfolio = state.portfoilio
-      newPorfolio += (action.payload.currentSelected.price * action.payload.count)
-      let copyArr = state.transactionArr
-      copyArr.push(action.payload)
+      let newWallet = state.wallet;
+      newWallet -= action.payload.currentSelected.price * action.payload.count;
+      let newPorfolio = state.portfoilio;
+      newPorfolio += action.payload.currentSelected.price * action.payload.count;
+      let copyArr = state.transactionArr;
+      copyArr.push(action.payload);
 
-      let currArrCopy = state.currentHoldingArr
-      currArrCopy.push(action.payload)
+      let currArrCopy = state.currentHoldingArr;
+      currArrCopy.push(action.payload);
 
-      return { ...state, transactionArr: copyArr, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio }
-
+      return { ...state, transactionArr: copyArr, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio };
 
     case "sell":
       break;
     case "dataUpdate":
-      console.log(state.coinsInfo, 'ppp')
+      console.log(state.coinsInfo, "ppp");
       return { ...state, coinsInfo: action.payload };
 
     case "popUp-toggle":
@@ -37,18 +34,14 @@ function reducer(state, action) {
       let copyRef = !state.popupRef;
       return { ...state, popupRef: copyRef };
 
-    case 'UpdateSelcted':
+    case "UpdateSelcted":
       let copySelected = action.payload;
       return { ...state, currentSelected: copySelected };
 
     default:
-      return { ...state }
+      return { ...state };
   }
 }
-
-
-
-
 
 function UserInterface() {
   let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: 0, coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false, currentSelected: null, transactionArr: [], currentHoldingArr: [] });
@@ -89,16 +82,16 @@ function UserInterface() {
         <div id="header4">Portfolio Value: ${state.portfoilio}</div>
       </div>
 
-      <div className="main-container">
+      <div id="main-container">
         {state.coinsInfo ? (
           <coinData.Provider value={{ state, dispatch }}>
             <CoinsWindow />
 
-            <div className="Exchange-container">
+            <div id="exchange-container">
               <CurrentHolding />
               <Transaction />
             </div>
-            <div className={state.popupRef === true ? 'popUp-container, show-popup' : "popUp-container"}>
+            <div className={state.popupRef === true ? "popUp-container, show-popup" : "popUp-container"}>
               <Popup />
             </div>
           </coinData.Provider>
