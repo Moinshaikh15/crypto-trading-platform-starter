@@ -11,7 +11,7 @@ export default function CurrHoldingCard(props) {
         {props.name}:{props.count}
       </h5>
       <p>
-        Total Paid:${props.price * props.count} , Current Value:{name.price}
+        Total Paid: ${props.price * props.count} , Current Value: {name.price}
       </p>
       <p style={{ color: profitLoss < 0 ? "red" : "green" }}>P/L:${profitLoss}</p>
     </div>

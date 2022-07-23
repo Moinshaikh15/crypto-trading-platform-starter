@@ -6,8 +6,6 @@ import CurrentHolding from "../Exchange/CurrentHolding";
 import Transaction from "../Exchange/Transaction";
 import Popup from "../Popup/Popup";
 
-const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2C%20ethereum%2C%20cardano%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h";
-
 function reducer(state, action) {
   switch (action.type) {
     case "buy":
@@ -48,6 +46,11 @@ function UserInterface() {
 
   async function getData() {
     console.log("ping");
+
+    let URLarr = ["https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=", "&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h"];
+    state.coinNames.forEach((ele, idx) => (idx !== state.coinNames.length - 1 ? URLarr.splice(idx + 1, 0, ele + "%2C%20") : URLarr.splice(idx + 1, 0, ele)));
+    let URL = URLarr.join("");
+
     let response = await fetch(URL).catch((error) => {
       console.log(error);
     });

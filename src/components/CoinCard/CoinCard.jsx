@@ -18,7 +18,9 @@ function CoinCard(props) {
       </div>
       <div className="coinCardInfo">
         {/* <div className="coinCardSymbol">{`${props.coinInfo[1].symbol}`}</div> */}
-        <div className="coinCardChange" style={{ color: props.coinInfo[1].change24Per > 0 ? "rgb(0, 169, 8)" : "rgb(243, 0, 0)" }}>{`${props.coinInfo[1].change24Per}%`}</div>
+        <div className="coinCardChange" style={{ color: props.coinInfo[1].change24Per > 0 ? "rgb(0, 169, 8)" : "rgb(239, 0, 0)" }}>
+          {props.coinInfo[1].change24Per > 0 ? `▴${props.coinInfo[1].change24Per}%` : `▾${props.coinInfo[1].change24Per.toString().slice(1)}%`}
+        </div>
         <div className="coinCardName">{`${props.coinInfo[1].name} to USD`}</div>
       </div>
       <div className="coinCardPrice">${props.coinInfo[1].price.toString().length > 7 ? props.coinInfo[1].price.toString().slice(0, 7) : props.coinInfo[1].price}</div>

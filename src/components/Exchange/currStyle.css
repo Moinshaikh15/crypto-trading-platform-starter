@@ -13,11 +13,12 @@
 }
 
 .curr-HoldingCard {
-  box-shadow: 1px 1px 4px 1px gray;
   width: 400px;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
+  box-shadow: 1px 1px 3px 1px #1a212b70;
+  background-color: #13181f;
 }
