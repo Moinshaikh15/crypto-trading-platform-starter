@@ -7,9 +7,9 @@ export default function CurrentHolding() {
 
   return (
     <div className="currholding-container">
-      <h2>Current Holdings</h2>
+      <h2 style={{  fontFamily: "Squada One"}}>Current Holdings</h2>
       <div className="currholding-cardscontainer">
-        {state.currentHoldingArr.length==0?
+        {state.currentHoldingArr.length===0?
         <p>Go Buy Something 🚀</p>
         : state.currentHoldingArr.map((e) => {
           return <CurrHoldingCard name={e.coinName} price={e.price} count={e.count} />;
