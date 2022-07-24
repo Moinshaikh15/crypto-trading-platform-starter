@@ -7,7 +7,7 @@ export default function Transaction() {
     let { state, dispatch } = useContext(coinData);
     return (
         <div className="Tarnsaction-container">
-            <h2>Transaction</h2>
+            <h2 style={{  fontFamily: "Squada One"}}>Transaction</h2>
             <div className="TranCard-container">
 
                 {
