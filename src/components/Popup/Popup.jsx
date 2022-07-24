@@ -7,8 +7,9 @@ function Popup(props) {
 
   let [selected, setSelected] = useState("buy");
   let [inputValue, setInputValue] = useState();
-  let maxValue =
-    selected === "buy"
+
+  function getMaxValue() {
+    return selected === "buy"
       ? state.wallet / state.currentSelected.price
       : selected === null
       ? 0
@@ -17,6 +18,17 @@ function Popup(props) {
             return e.count;
           }
         });
+  }
+  // let maxValue =
+  //   selected === "buy"
+  //     ? state.wallet / state.currentSelected.price
+  //     : selected === null
+  //     ? 0
+  //     : state.currentHoldingArr.map((e) => {
+  //         if (e.coinName === state.currentSelected.coinName) {
+  //           return e.count;
+  //         }
+  //       });
 
   let ref = useRef();
 
@@ -41,17 +53,26 @@ function Popup(props) {
             htmlFor="input"
             style={{ overflow: "hidden" }}
             onClick={() => {
-              ref.current.value = maxValue;
+              ref.current.value = getMaxValue();
               setInputValue(ref.current.value);
             }}
           >
-            Max {maxValue}
+            Max {getMaxValue()}
           </label>
           {/* </div> */}
 
           <div className="buy-sell">
             <div>
-              <input type="radio" name="radio-btn" id="btn1" onClick={() => (maxValue < ref.current.value ? setSelected(null) : setSelected("buy"))} />
+              <input
+                type="radio"
+                name="radio-btn"
+                id="btn1"
+                checked={true}
+                onClick={() => {
+                  // if(maxValue < ref.current.value) setSelected(null)
+                  setSelected("buy");
+                }}
+              />
               <label htmlFor="btn1">Buy</label>
             </div>
 
