@@ -21,7 +21,7 @@ function Popup(props) {
       return foundCount ? foundCount.count : 0;
     }
   }
- 
+
 
   let ref = useRef();
 
@@ -77,9 +77,7 @@ function Popup(props) {
                 id="btn2"
                 checked={selected === "buy" ? false : true}
                 onClick={() => {
-                  state.currentHoldingArr.map((e) => {
-                    setSelected("sell");
-                  });
+                  setSelected("sell");
                 }}
               />
               <label htmlFor="btn2">Sell</label>

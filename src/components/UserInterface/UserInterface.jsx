@@ -12,10 +12,14 @@ function reducer(state, action) {
       let newWallet = state.wallet - action.payload.price * action.payload.count;
       let newPorfolio = state.portfolio + action.payload.price * action.payload.count;
       return { ...state, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))], currentHoldingArr: [...state.currentHoldingArr, action.payload], wallet: newWallet, portfolio: newPorfolio };
+
     case "sell":
+      let newWallet2 = state.wallet + (action.payload.price * action.payload.count);
+      let newPorfolio2 = state.portfolio - (action.payload.price * action.payload.count);
       let currHoldCopy = [...state.currentHoldingArr].map((e) => (e.coinName === action.payload.coinName ? { ...e, count: e.count - action.payload.count } : e));
       currHoldCopy = currHoldCopy.filter((ele) => ele.count > 0);
-      return { ...state, currentHoldingArr: currHoldCopy, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))] };
+      return { ...state, currentHoldingArr: currHoldCopy, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))], wallet: newWallet2, portfolio: newPorfolio2 };
+      
     case "dataUpdate":
       return { ...state, coinsInfo: action.payload };
     case "popUp-toggle":
