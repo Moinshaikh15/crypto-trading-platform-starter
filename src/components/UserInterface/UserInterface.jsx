@@ -12,30 +12,27 @@ function reducer(state, action) {
       let newWallet = state.wallet - action.payload.price * action.payload.count;
       let newPorfolio = state.portfolio + action.payload.price * action.payload.count;
 
-
       let copyArr = [...state.currentHoldingArr];
       if (copyArr.length === 0) {
-        copyArr.push(JSON.parse(JSON.stringify(action.payload)))
-      }
-      else {
+        copyArr.push(JSON.parse(JSON.stringify(action.payload)));
+      } else {
         let found = false;
         for (let i = 0; i < copyArr.length; i++) {
           if (copyArr[i].coinName === action.payload.coinName) {
             copyArr[i].count = Number(copyArr[i].count) + Number(action.payload.count);
-            found = true
+            found = true;
           }
         }
         if (found === false) {
-          copyArr.push(JSON.parse(JSON.stringify(action.payload)))
+          copyArr.push(JSON.parse(JSON.stringify(action.payload)));
         }
       }
-
 
       return { ...state, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))], currentHoldingArr: copyArr, wallet: newWallet, portfolio: newPorfolio };
 
     case "sell":
-      let newWallet2 = state.wallet + (action.payload.price * action.payload.count);
-      let newPorfolio2 = state.portfolio - (action.payload.price * action.payload.count);
+      let newWallet2 = state.wallet + action.payload.price * action.payload.count;
+      let newPorfolio2 = state.portfolio - action.payload.price * action.payload.count;
       let currHoldCopy = [...state.currentHoldingArr].map((e) => (e.coinName === action.payload.coinName ? { ...e, count: e.count - action.payload.count } : e));
       currHoldCopy = currHoldCopy.filter((ele) => ele.count > 0);
       return { ...state, currentHoldingArr: currHoldCopy, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))], wallet: newWallet2, portfolio: newPorfolio2 };
@@ -90,8 +87,10 @@ function UserInterface() {
   return (
     <div id="container">
       <div id="appHeader">
-        <div id="header1">Earn some virtual money 💰</div>
-        <div id="header2">To buy virtual food</div>
+        <div id="header1">
+          <img id="acmeLogo" src="/images/logo.svg" alt="ACME Logo" /> ACME
+        </div>
+        <div id="header2">Paper Cryptocurrency Trading Platform</div>
         <div id="header3">Wallet: ${state.wallet}</div>
         <div id="header4">Portfolio Value: ${state.portfolio}</div>
       </div>

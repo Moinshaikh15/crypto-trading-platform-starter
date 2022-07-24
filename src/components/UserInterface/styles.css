@@ -8,6 +8,23 @@
 
   background-color: #13181f;
 }
+#acmeLogo {
+  height: 50px;
+  width: 50px;
+}
+#header1 {
+  align-self: flex-start;
+  font-size: 38px;
+  font-weight: 500;
+  font-family: "Cormorant SC";
+}
+#header2 {
+  align-self: flex-start;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: "Cormorant SC";
+}
+
 #loadingScreen {
   color: whitesmoke;
 }
@@ -48,10 +65,10 @@
   background: #555;
 }
 #exchange-container {
-  height: auto;
-  margin-top: 15px;
-  /* height: 350px;
-  margin-top: 17px; */
+  /* height: auto;
+  margin-top: 15px; */
+  height: 350px;
+  margin-top: 17px;
   margin-bottom: 17px;
   display: flex;
   gap: 10px;
