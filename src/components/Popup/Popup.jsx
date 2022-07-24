@@ -9,26 +9,20 @@ function Popup(props) {
   let [inputValue, setInputValue] = useState();
 
   function getMaxValue() {
-    return selected === "buy"
-      ? state.wallet / state.currentSelected.price
-      : selected === null
-      ? 0
-      : state.currentHoldingArr.map((e) => {
-          if (e.coinName === state.currentSelected.coinName) {
-            return e.count;
-          }
-        });
+    if (selected === "buy") {
+      if (state.wallet !== 0) {
+        return state.wallet / state.currentSelected.price;
+      }
+    } else {
+      let foundCount = state.currentHoldingArr.find((e) => {
+        if (e.coinName === state.currentSelected.coinName) {
+          return e.count;
+        }
+      });
+
+      return foundCount ? foundCount.count : 0;
+    }
   }
-  // let maxValue =
-  //   selected === "buy"
-  //     ? state.wallet / state.currentSelected.price
-  //     : selected === null
-  //     ? 0
-  //     : state.currentHoldingArr.map((e) => {
-  //         if (e.coinName === state.currentSelected.coinName) {
-  //           return e.count;
-  //         }
-  //       });
 
   let ref = useRef();
 
@@ -39,7 +33,9 @@ function Popup(props) {
       ) : (
         <>
           <div className="header">
-            <h4>Buy {state.currentSelected.coinName}</h4>
+            <h4>
+              {selected === "sell" ? "Sell" : "Buy"} {state.currentSelected.coinName}
+            </h4>
             <h4 onClick={() => dispatch({ type: "popUp-toggle" })} style={{ cursor: "pointer" }}>
               ☓
             </h4>
@@ -67,7 +63,7 @@ function Popup(props) {
                 type="radio"
                 name="radio-btn"
                 id="btn1"
-                checked={true}
+                checked={selected === "buy" ? true : false}
                 onClick={() => {
                   // if(maxValue < ref.current.value) setSelected(null)
                   setSelected("buy");
@@ -81,13 +77,11 @@ function Popup(props) {
                 type="radio"
                 name="radio-btn"
                 id="btn2"
+                checked={selected === "buy" ? false : true}
                 onClick={() => {
                   state.currentHoldingArr.map((e) => {
-                    if (e.coinName === state.currentSelected.coinName) {
-                      setSelected("sell");
-                    }
+                    setSelected("sell");
                   });
-                  if (selected !== "sell") setSelected(null);
                 }}
               />
               <label htmlFor="btn2">Sell</label>
@@ -96,7 +90,10 @@ function Popup(props) {
 
           <button
             onClick={() => {
-              if (selected !== null) {
+              console.log("outside buy/sell button working");
+              console.log(state.transactionArr.find((ele) => ele.coinName === state.currentSelected.coinName));
+              if (state.transactionArr.find((ele) => ele.coinName === state.currentSelected.coinName) || selected === "buy") {
+                console.log("inside buy/sell button working");
                 dispatch({ type: selected, payload: { coinName: state.currentSelected.coinName, price: state.currentSelected.price, time: new Date().toLocaleString(), count: inputValue, typeofTransaction: selected } });
                 dispatch({ type: "popUp-toggle" });
               }

@@ -33,7 +33,9 @@
 }
 
 #exchange-container {
+  height: auto;
   margin-top: 17px;
+  margin-bottom: 17px;
   display: flex;
   gap: 10px;
   overflow: hidden;
