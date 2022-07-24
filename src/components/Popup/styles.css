@@ -1,8 +1,8 @@
 .pop-up {
   display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 270px;
+  width: 400px;
+  height: 290px;
   border-radius: 10px;
   padding: 10px;
   background-color: white;
@@ -10,6 +10,8 @@
   overflow: hidden;
   padding-top: 60px;
   gap: 15px;
+background-color: rgba(255, 255, 255, 0.397);
+  backdrop-filter: blur(10px);
 }
 
 .pop-up .header {
@@ -29,13 +31,16 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   background-color: rgba(128, 128, 128, 0.644);
   opacity: 0;
   pointer-events: none;
+  overflow: hidden;
+  
+  
 }
 
 .show-popup {
@@ -68,10 +73,12 @@
 }
 .pop-up input {
   height: 30px;
+  border-radius: 10px;
 }
 .pop-up button {
   background-color: white;
   padding: 5px 20px;
   font-size: 20px;
   border-radius: 5px;
+  border: none;
 }

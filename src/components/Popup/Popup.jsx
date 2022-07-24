@@ -7,7 +7,7 @@ function Popup(props) {
 
   let [selected, setSelected] = useState(null);
   let [inputValue, setInputValue] = useState();
-  let maxValue = selected === 'buy' ? Math.round(state.wallet / state.currentSelected.price) : (selected === null ? 0 : (state.currentHoldingArr.map((e) => {
+  let maxValue = selected === 'buy' ? (state.wallet / state.currentSelected.price) : (selected === null ? 0 : (state.currentHoldingArr.map((e) => {
     if (e.coinName === state.currentSelected.coinName) {
       return e.count
     }
@@ -30,11 +30,13 @@ function Popup(props) {
 
             <div className="input-container">
               <input ref={ref} type="number" name="input" id="input" onChange={() => setInputValue(ref.current.value)} required />
-              <label htmlFor="input" style={{ overflow: 'hidden' }} onClick={() => ref.current.value = maxValue}
+              <label htmlFor="input" style={{ overflow: 'hidden' }} onClick={() => {ref.current.value = maxValue
+              setInputValue(ref.current.value)
+              }}
               >Max {maxValue}
               </label>
             </div>
-          
+
 
             <div className="buy-sell">
               <div>
