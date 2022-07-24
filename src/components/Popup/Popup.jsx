@@ -7,6 +7,7 @@ function Popup(props) {
 
   let [selected, setSelected] = useState("buy");
   let [inputValue, setInputValue] = useState();
+
   let maxValue =
     selected === "buy"
       ? state.wallet / state.currentSelected.price
@@ -76,7 +77,7 @@ function Popup(props) {
           <button
             onClick={() => {
               if (selected !== null) {
-                dispatch({ type: selected, payload: { coinName: state.currentSelected.coinName, price: state.currentSelected.price, time: Date.now(), count: inputValue, typeofTransaction: selected } });
+                dispatch({ type: selected, payload: { coinName: state.currentSelected.coinName, price: state.currentSelected.price, time: new Date().toLocaleString(), count: inputValue, typeofTransaction: selected } });
                 dispatch({ type: "popUp-toggle" });
               }
             }}

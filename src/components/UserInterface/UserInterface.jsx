@@ -15,7 +15,6 @@ function reducer(state, action) {
       newPorfolio += (action.payload.price * action.payload.count)
       let copyArr = state.transactionArr
 
-      // copyArr.push(action.payload)
 
       let transArrCopy1 = state.transactionArr
       transArrCopy1.push(JSON.parse(JSON.stringify(action.payload)))
@@ -24,7 +23,6 @@ function reducer(state, action) {
       currArrCopy.push(action.payload)
       return { ...state, transactionArr: transArrCopy1, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio }
 
-      return { ...state, transactionArr: copyArr, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio };
 
     case "sell":
       let currArrCopy2 = state.currentHoldingArr
@@ -45,9 +43,8 @@ function reducer(state, action) {
 
       return { ...state, currentHoldingArr: currArrCopy2, transactionArr: transArrCopy }
 
-      break;
     case "dataUpdate":
-      // console.log(state.coinsInfo, 'ppp')
+      console.log(state.coinsInfo, 'ppp')
       return { ...state, coinsInfo: action.payload };
 
     case "popUp-toggle":
