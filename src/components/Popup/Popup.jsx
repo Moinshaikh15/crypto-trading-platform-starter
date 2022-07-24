@@ -42,19 +42,21 @@ function Popup(props) {
 
           <p>Current Price:${state.currentSelected.price}</p>
 
-          {/* <div className="input-container"> */}
-          <input ref={ref} type="number" name="input" id="input" onChange={() => setInputValue(ref.current.value)} required />
-          <label
-            htmlFor="input"
-            style={{ overflow: "hidden" }}
-            onClick={() => {
-              ref.current.value = getMaxValue();
-              setInputValue(ref.current.value);
-            }}
-          >
-            Max {getMaxValue()}
-          </label>
-          {/* </div> */}
+          <div className="input-container">
+            <input ref={ref} type="number" name="input" id="input" onChange={() => setInputValue(ref.current.value)} required />
+            {inputValue !== undefined ? <p>You will {selected === 'buy' ? 'Pay' : 'Receive'} {state.currentSelected.price * inputValue}</p> : ''}
+
+            <label
+              htmlFor="input"
+              onClick={() => {
+                ref.current.value = getMaxValue();
+                setInputValue(ref.current.value);
+              }}
+            >
+              Max {getMaxValue()}
+            </label>
+
+          </div>
 
           <div className="buy-sell">
             <div>
@@ -84,7 +86,7 @@ function Popup(props) {
             </div>
           </div>
 
-          <button
+          <button style={{ opacity: inputValue <= getMaxValue() ? '1' : '0.5' }}
             onClick={() => {
               if ((state.transactionArr.find((ele) => ele.coinName === state.currentSelected.coinName) && inputValue <= getMaxValue()) || (selected === "buy" && state.wallet >= inputValue * state.currentSelected.price)) {
                 dispatch({ type: selected, payload: { coinName: state.currentSelected.coinName, price: state.currentSelected.price, time: new Date().toLocaleString(), count: inputValue, typeofTransaction: selected } });
