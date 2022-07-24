@@ -2,15 +2,15 @@
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 290px;
+  height: 300px;
   border-radius: 10px;
   padding: 10px;
   background-color: white;
   position: relative;
   overflow: hidden;
-  padding-top: 60px;
-  gap: 15px;
-  background-color: rgba(255, 255, 255, 0.397);
+  padding-top: 50px;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.419);
   backdrop-filter: blur(10px);
 }
 
@@ -35,7 +35,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(128, 128, 128, 0.644);
+  background-color: rgba(32, 32, 32, 0.644);
   opacity: 0;
   pointer-events: none;
   overflow: hidden;
@@ -50,7 +50,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(128, 128, 128, 0.644);
+  background-color: rgb(20 19 19 / 64%);
   opacity: 100;
 }
 
@@ -67,8 +67,13 @@
 
 .pop-up .input-container {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 4px;
 }
+.input-container p{
+    font-size: 12px;
+}
+
 .pop-up input {
   height: 30px;
   border-radius: 10px;
