@@ -9,61 +9,27 @@ import Popup from "../Popup/Popup";
 function reducer(state, action) {
   switch (action.type) {
     case "buy":
-      let newWallet = state.wallet;
-      newWallet -= action.payload.price * action.payload.count;
-      let newPorfolio = state.portfoilio;
-      newPorfolio += action.payload.price * action.payload.count;
-      let copyArr = state.transactionArr;
-
-
-      let transArrCopy1 = state.transactionArr;
-      transArrCopy1.push(JSON.parse(JSON.stringify(action.payload)));
-
-      let currArrCopy = state.currentHoldingArr;
-      currArrCopy.push(action.payload);
-      return { ...state, transactionArr: transArrCopy1, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio };
-
-
+      let newWallet = state.wallet - action.payload.price * action.payload.count;
+      let newPorfolio = state.portfolio + action.payload.price * action.payload.count;
+      return { ...state, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))], currentHoldingArr: [...state.currentHoldingArr, action.payload], wallet: newWallet, portfolio: newPorfolio };
     case "sell":
-      let currArrCopy2 = state.currentHoldingArr;
-      currArrCopy2.map((e) => {
-        if (e.coinNames === action.payload.coinNames) {
-          e.count -= action.payload.count;
-        }
-      });
-      for (let i = 0; i < currArrCopy2.length; i++) {
-        if (currArrCopy2[i].count <= 0) {
-          currArrCopy2.splice(i, 1);
-          i--;
-        }
-      }
-
-      let transArrCopy = state.transactionArr;
-      transArrCopy.push(action.payload);
-
-      return { ...state, currentHoldingArr: currArrCopy2, transactionArr: transArrCopy };
-
+      let currHoldCopy = [...state.currentHoldingArr].map((e) => (e.coinName === action.payload.coinName ? { ...e, count: e.count - action.payload.count } : e));
+      currHoldCopy = currHoldCopy.filter((ele) => ele.count > 0);
+      return { ...state, currentHoldingArr: currHoldCopy, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))] };
     case "dataUpdate":
-      console.log(state.coinsInfo, 'ppp')
       return { ...state, coinsInfo: action.payload };
-
     case "popUp-toggle":
-      // console.log(state.popupRef, 'ooo')
       let copyRef = !state.popupRef;
       return { ...state, popupRef: copyRef };
-
-    case "UpdateSelcted":
-      let copySelected = action.payload;
-      console.log("updateSelected is", copySelected);
-      return { ...state, currentSelected: copySelected };
-
+    case "UpdateSelected":
+      return { ...state, currentSelected: JSON.parse(JSON.stringify(action.payload)) };
     default:
       return { ...state };
   }
 }
 
 function UserInterface() {
-  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: 0, coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false, currentSelected: null, transactionArr: [], currentHoldingArr: [] });
+  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfolio: 0, coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false, currentSelected: null, transactionArr: [], currentHoldingArr: [] });
 
   async function getData() {
     console.log("ping");
@@ -95,7 +61,7 @@ function UserInterface() {
     };
   }, []);
 
-  console.log(state.coinsInfo);
+  // console.log(state.coinsInfo);
 
   return (
     <div id="container">
@@ -103,7 +69,7 @@ function UserInterface() {
         <div id="header1">Earn some virtual money 💰</div>
         <div id="header2">To buy virtual food</div>
         <div id="header3">Wallet: ${state.wallet}</div>
-        <div id="header4">Portfolio Value: ${state.portfoilio}</div>
+        <div id="header4">Portfolio Value: ${state.portfolio}</div>
       </div>
 
       <div id="main-container">

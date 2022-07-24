@@ -1,6 +1,5 @@
 .currholding-container {
   width: 495px;
-  height: 400px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -12,8 +11,14 @@
   color: whitesmoke;
 }
 
+.currholding-cardscontainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .curr-HoldingCard {
-  width: 400px;
   display: flex;
   flex-direction: column;
   gap: 5px;
