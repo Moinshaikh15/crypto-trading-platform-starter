@@ -40,7 +40,7 @@ function Popup(props) {
             </h4>
           </div>
 
-          <p>current Price:${state.currentSelected.price}</p>
+          <p>Current Price:${state.currentSelected.price}</p>
 
           {/* <div className="input-container"> */}
           <input ref={ref} type="number" name="input" id="input" onChange={() => setInputValue(ref.current.value)} required />
