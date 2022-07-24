@@ -20,9 +20,9 @@
 }
 #header2 {
   align-self: flex-start;
-  font-size: 25px;
+  font-size: 27px;
   font-weight: 500;
-  font-family: "Cormorant SC";
+  font-family: "Advent Pro";
 }
 #header3 {
   display: flex;
