@@ -1,6 +1,6 @@
-import { useContext } from 'react';
-import './TranStyle.css'
-import TransactionCard from "./TransactionCard"
+import { useContext } from "react";
+import "./TranStyle.css";
+import TransactionCard from "./TransactionCard";
 
 import coinData from "../../contexts/coinData";
 export default function Transaction() {
@@ -16,4 +16,5 @@ export default function Transaction() {
 
 
     </div>
+  
 }

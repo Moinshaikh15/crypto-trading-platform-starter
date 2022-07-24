@@ -34,6 +34,7 @@ function Popup(props) {
               >Max {maxValue}
               </label>
             </div>
+          
 
             <div className="buy-sell">
               <div>

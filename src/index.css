@@ -7,6 +7,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  background-color: #13181f;
+}
 body {
   display: flex;
   justify-content: center;

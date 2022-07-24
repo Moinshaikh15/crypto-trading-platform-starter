@@ -1,10 +1,11 @@
-import './currStyle.css'
-import CurrHoldingCard from "./CurrHoldingCard"
-import { useContext } from 'react'
-import coinData from '../../contexts/coinData'
+import "./currStyle.css";
+import CurrHoldingCard from "./CurrHoldingCard";
+import { useContext } from "react";
+import coinData from "../../contexts/coinData";
 export default function CurrentHolding() {
+  let { state } = useContext(coinData);
 
-    let { state } = useContext(coinData)
+   
 
     return <div className="currholding-container">
         <h2>Current Holdings</h2>
@@ -17,6 +18,5 @@ export default function CurrentHolding() {
 
         </div>
     </div>
-
-
+  
 }

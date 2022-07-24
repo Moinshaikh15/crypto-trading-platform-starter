@@ -1,80 +1,77 @@
 .pop-up {
-    display: flex;
-    flex-direction: column;
-    width: 350px;
-    height: 270px;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: white;
-    position: relative;
-    overflow: hidden;
-    padding-top: 60px;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 270px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  padding-top: 60px;
+  gap: 15px;
 }
 
 .pop-up .header {
-    display: flex;
-    justify-content: space-between;
-    background-color: black;
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: white;
-    width: 100%;
-    padding: 10px;
-    
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  width: 100%;
+  padding: 10px;
 }
 
 .popUp-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(128, 128, 128, 0.644);
-    opacity: 0;
-    pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.644);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .show-popup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(128, 128, 128, 0.644);
-    opacity: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.644);
+  opacity: 100;
 }
 
 .buy-sell {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.buy-sell>div{
-    display: flex;
-   align-items: center;
-   gap: 5px;
-    
+.buy-sell > div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .pop-up .input-container {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
-.pop-up input{
-    height: 30px;
+.pop-up input {
+  height: 30px;
 }
-.pop-up button{
-    background-color: white;
-    padding: 5px 20px;
-     font-size: 20px;
-     border-radius: 5px;
+.pop-up button {
+  background-color: white;
+  padding: 5px 20px;
+  font-size: 20px;
+  border-radius: 5px;
 }

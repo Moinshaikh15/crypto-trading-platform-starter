@@ -6,10 +6,6 @@ import CurrentHolding from "../Exchange/CurrentHolding";
 import Transaction from "../Exchange/Transaction";
 import Popup from "../Popup/Popup";
 
-const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2C%20ethereum%2C%20cardano%2C%20solana&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h";
-
-
-
 function reducer(state, action) {
   switch (action.type) {
     case "buy":
@@ -28,6 +24,7 @@ function reducer(state, action) {
       currArrCopy.push(action.payload)
       return { ...state, transactionArr: transArrCopy1, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio }
 
+      return { ...state, transactionArr: copyArr, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio };
 
     case "sell":
       let currArrCopy2 = state.currentHoldingArr
@@ -58,24 +55,25 @@ function reducer(state, action) {
       let copyRef = !state.popupRef;
       return { ...state, popupRef: copyRef };
 
-    case 'UpdateSelcted':
+    case "UpdateSelcted":
       let copySelected = action.payload;
       return { ...state, currentSelected: copySelected };
 
     default:
-      return { ...state }
+      return { ...state };
   }
 }
-
-
-
-
 
 function UserInterface() {
   let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: 0, coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false, currentSelected: null, transactionArr: [], currentHoldingArr: [] });
 
   async function getData() {
-    // console.log("ping");
+    console.log("ping");
+
+    let URLarr = ["https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=", "&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h"];
+    state.coinNames.forEach((ele, idx) => (idx !== state.coinNames.length - 1 ? URLarr.splice(idx + 1, 0, ele + "%2C%20") : URLarr.splice(idx + 1, 0, ele)));
+    let URL = URLarr.join("");
+
     let response = await fetch(URL).catch((error) => {
       console.log(error);
     });
@@ -110,21 +108,21 @@ function UserInterface() {
         <div id="header4">Portfolio Value: ${state.portfoilio}</div>
       </div>
 
-      <div className="main-container">
+      <div id="main-container">
         {state.coinsInfo ? (
           <coinData.Provider value={{ state, dispatch }}>
             <CoinsWindow />
 
-            <div className="Exchange-container">
+            <div id="exchange-container">
               <CurrentHolding />
               <Transaction />
             </div>
-            <div className={state.popupRef === true ? 'popUp-container, show-popup' : "popUp-container"}>
+            <div className={state.popupRef === true ? "popUp-container, show-popup" : "popUp-container"}>
               <Popup />
             </div>
           </coinData.Provider>
         ) : (
-          <div>"Fetching..."</div>
+          <div id="loadingScreen">"Fetching..."</div>
         )}
       </div>
     </div>
