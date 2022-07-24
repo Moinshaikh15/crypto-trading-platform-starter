@@ -28,14 +28,14 @@ function Popup(props) {
 
             <p>current Price:${state.currentSelected.price}</p>
 
-            <div className="input-container">
+            {/* <div className="input-container"> */}
               <input ref={ref} type="number" name="input" id="input" onChange={() => setInputValue(ref.current.value)} required />
               <label htmlFor="input" style={{ overflow: 'hidden' }} onClick={() => {ref.current.value = maxValue
               setInputValue(ref.current.value)
               }}
               >Max {maxValue}
               </label>
-            </div>
+            {/* </div> */}
 
 
             <div className="buy-sell">
