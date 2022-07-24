@@ -9,8 +9,8 @@ export default function Transaction() {
         <h2>Transaction</h2>
         {
             state.transactionArr.map((e) => {
- console.log(e)
-                return <TransactionCard name={e.currentSelected.coinName} price={e.currentSelected.price} time={e.time} count={e.count}/>
+                console.log(e,'kk')
+                return <TransactionCard name={e.coinName} price={e.price} time={e.time} count={e.count} type={e.typeofTransaction}/>
             })
         }
 

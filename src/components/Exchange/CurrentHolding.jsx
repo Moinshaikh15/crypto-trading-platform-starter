@@ -10,7 +10,7 @@ export default function CurrentHolding() {
         <h2>Current Holdings</h2>
         <div>
             {state.currentHoldingArr.map((e) => {
-               return < CurrHoldingCard name={e.currentSelected.coinName} price={e.currentSelected.price} count={e.count} />
+               return < CurrHoldingCard name={e.coinName} price={e.price} count={e.count} />
             })
 
             }

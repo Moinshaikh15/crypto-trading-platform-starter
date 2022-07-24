@@ -14,22 +14,43 @@ function reducer(state, action) {
   switch (action.type) {
     case "buy":
       let newWallet = state.wallet
-      newWallet -= (action.payload.currentSelected.price * action.payload.count)
+      newWallet -= (action.payload.price * action.payload.count)
       let newPorfolio = state.portfoilio
-      newPorfolio += (action.payload.currentSelected.price * action.payload.count)
+      newPorfolio += (action.payload.price * action.payload.count)
       let copyArr = state.transactionArr
-      copyArr.push(action.payload)
+
+      // copyArr.push(action.payload)
+
+      let transArrCopy1 = state.transactionArr
+      transArrCopy1.push(JSON.parse(JSON.stringify(action.payload)))
 
       let currArrCopy = state.currentHoldingArr
       currArrCopy.push(action.payload)
-
-      return { ...state, transactionArr: copyArr, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio }
+      return { ...state, transactionArr: transArrCopy1, currentHoldingArr: currArrCopy, wallet: newWallet, portfoilio: newPorfolio }
 
 
     case "sell":
+      let currArrCopy2 = state.currentHoldingArr
+      currArrCopy2.map((e) => {
+        if (e.coinNames === action.payload.coinNames) {
+          e.count -= action.payload.count
+        }
+      })
+      for (let i = 0; i < currArrCopy2.length; i++) {
+        if (currArrCopy2[i].count <= 0) {
+          currArrCopy2.splice(i, 1);
+          i--;
+        }
+      }
+
+      let transArrCopy = state.transactionArr
+      transArrCopy.push(action.payload)
+
+      return { ...state, currentHoldingArr: currArrCopy2, transactionArr: transArrCopy }
+
       break;
     case "dataUpdate":
-      console.log(state.coinsInfo, 'ppp')
+      // console.log(state.coinsInfo, 'ppp')
       return { ...state, coinsInfo: action.payload };
 
     case "popUp-toggle":
@@ -54,7 +75,7 @@ function UserInterface() {
   let [state, dispatch] = useReducer(reducer, { wallet: 100, portfoilio: 0, coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false, currentSelected: null, transactionArr: [], currentHoldingArr: [] });
 
   async function getData() {
-    console.log("ping");
+    // console.log("ping");
     let response = await fetch(URL).catch((error) => {
       console.log(error);
     });

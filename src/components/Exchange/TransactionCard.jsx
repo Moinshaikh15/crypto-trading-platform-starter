@@ -1,10 +1,12 @@
 export default function TransactionCard(props) {
      return <div className="tran-Card">
-          <div className="bar">
-               <p>BOUGHT</p>
+          <div className="bar" style={{ backgroundColor: props.type === 'buy' ? 'green' : 'red' }}>
+               {props.type === 'buy' ? <p>BOUGHT</p> : <p style={{ paddingLeft: '15px' }}>SOLD</p>
+               }
+
           </div>
           <h5>{props.name}-{props.count}@${props.price}</h5>
-          <p>Paid:${props.price * props.count}</p>
+          <p>{props.type === 'buy' ? 'Paid' : 'Received'}:${props.price * props.count}</p>
           <p>Bought on {props.time}</p>
      </div>
 }
