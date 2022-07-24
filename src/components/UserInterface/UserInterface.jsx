@@ -11,37 +11,18 @@ function reducer(state, action) {
     case "buy":
       let newWallet = state.wallet - action.payload.price * action.payload.count;
       let newPorfolio = state.portfolio + action.payload.price * action.payload.count;
-
       return { ...state, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))], currentHoldingArr: [...state.currentHoldingArr, action.payload], wallet: newWallet, portfolio: newPorfolio };
     case "sell":
-      let currHoldCopy = [...state.currentHoldingArr];
-      currHoldCopy.map((e) => {
-        if (e.coinName === action.payload.coinName) {
-          e.count -= action.payload.count;
-        }
-        return e;
-      });
+      let currHoldCopy = [...state.currentHoldingArr].map((e) => (e.coinName === action.payload.coinName ? { ...e, count: e.count - action.payload.count } : e));
       currHoldCopy = currHoldCopy.filter((ele) => ele.count > 0);
-
-      let transArrCopy = state.transactionArr;
-      transArrCopy.push(action.payload);
-
-      return { ...state, currentHoldingArr: currHoldCopy, transactionArr: transArrCopy };
-
+      return { ...state, currentHoldingArr: currHoldCopy, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))] };
     case "dataUpdate":
-      console.log(state.coinsInfo, "ppp");
       return { ...state, coinsInfo: action.payload };
-
     case "popUp-toggle":
-      // console.log(state.popupRef, 'ooo')
       let copyRef = !state.popupRef;
       return { ...state, popupRef: copyRef };
-
-    case "UpdateSelcted":
-      let copySelected = action.payload;
-      console.log("updateSelected is", copySelected);
-      return { ...state, currentSelected: copySelected };
-
+    case "UpdateSelected":
+      return { ...state, currentSelected: JSON.parse(JSON.stringify(action.payload)) };
     default:
       return { ...state };
   }
@@ -80,7 +61,7 @@ function UserInterface() {
     };
   }, []);
 
-  console.log(state.coinsInfo);
+  // console.log(state.coinsInfo);
 
   return (
     <div id="container">

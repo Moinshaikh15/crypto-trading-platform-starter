@@ -9,7 +9,7 @@ function CoinCard(props) {
       id={`coinCard${props.index + 1}`}
       className="coinCard"
       onClick={() => {
-        coinDataContext.dispatch({ type: "UpdateSelcted", payload: { price: props.coinInfo[1].price, coinName: props.coinInfo[1].name } });
+        coinDataContext.dispatch({ type: "UpdateSelected", payload: { price: props.coinInfo[1].price, coinName: props.coinInfo[1].name } });
         coinDataContext.dispatch({ type: "popUp-toggle" });
       }}
     >
