@@ -92,8 +92,13 @@ function UserInterface() {
           <img id="acmeLogo" src="/images/logo.svg" alt="ACME Logo" /> ACME
         </div>
         <div id="header2">Paper Cryptocurrency Trading Platform</div>
-        <div id="header3">Wallet: ${state.wallet}</div>
-        <div id="header4">Portfolio Value: ${state.portfolio}</div>
+        <div id="header3">
+          <img id="walletIcon" src="/images/wallet.svg" alt="Wallet Icon" /> Wallet: ${state.wallet}
+        </div>
+        <div id="header4">
+          <img id="portfolioIcon" src="/images/portfolio.png" alt="Portfolio Icon" />
+          Portfolio Value: ${state.portfolio}
+        </div>
       </div>
 
       <div id="main-container">

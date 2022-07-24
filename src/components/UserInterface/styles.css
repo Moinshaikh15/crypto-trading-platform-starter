@@ -24,6 +24,25 @@
   font-weight: 500;
   font-family: "Cormorant SC";
 }
+#header3 {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+}
+#walletIcon {
+  height: 30px;
+  padding-right: 4px;
+  filter: invert(100%);
+}
+#header4 {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+}
+#portfolioIcon {
+  height: 30px;
+  filter: invert(100%);
+}
 
 #loadingScreen {
   color: whitesmoke;
