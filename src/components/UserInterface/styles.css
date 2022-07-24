@@ -54,6 +54,8 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: #4a4949;
+  border-left: 4px solid #171d29;
+  border-right: 4px solid#171d29;
 }
 
 /* Handle */
