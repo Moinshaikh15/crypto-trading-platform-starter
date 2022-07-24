@@ -10,9 +10,6 @@ function reducer(state, action) {
   switch (action.type) {
     case "buy":
       let newWallet = state.wallet - action.payload.price * action.payload.count;
-
-      // let newPorfolio = state.portfolio + action.payload.price * action.payload.count;
-
       let copyArr = [...state.currentHoldingArr];
       if (copyArr.length === 0) {
         copyArr.push(JSON.parse(JSON.stringify(action.payload)))
@@ -37,8 +34,6 @@ function reducer(state, action) {
 
       let currHoldCopy = [...state.currentHoldingArr].map((e) => (e.coinName === action.payload.coinName ? { ...e, count: e.count - action.payload.count } : e));
       currHoldCopy = currHoldCopy.filter((ele) => ele.count > 0);
-      // let newPorfolio2 = 0;
-      // currHoldCopy.map((e) => newPorfolio += e.count * state.coinsInfo[e.coinName.toLowerCase()].price)
       return { ...state, currentHoldingArr: currHoldCopy, transactionArr: [...state.transactionArr, JSON.parse(JSON.stringify(action.payload))], wallet: newWallet2};
 
     case "dataUpdate":
