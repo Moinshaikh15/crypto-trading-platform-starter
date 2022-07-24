@@ -65,7 +65,6 @@ function Popup(props) {
                 id="btn1"
                 checked={selected === "buy" ? true : false}
                 onClick={() => {
-                  // if(maxValue < ref.current.value) setSelected(null)
                   setSelected("buy");
                 }}
               />
@@ -90,10 +89,7 @@ function Popup(props) {
 
           <button
             onClick={() => {
-              console.log("outside buy/sell button working");
-              console.log(state.transactionArr.find((ele) => ele.coinName === state.currentSelected.coinName));
-              if (state.transactionArr.find((ele) => ele.coinName === state.currentSelected.coinName) || selected === "buy") {
-                console.log("inside buy/sell button working");
+              if ((state.transactionArr.find((ele) => ele.coinName === state.currentSelected.coinName) && inputValue <= getMaxValue()) || (selected === "buy" && state.wallet >= inputValue * state.currentSelected.price)) {
                 dispatch({ type: selected, payload: { coinName: state.currentSelected.coinName, price: state.currentSelected.price, time: new Date().toLocaleString(), count: inputValue, typeofTransaction: selected } });
                 dispatch({ type: "popUp-toggle" });
               }
