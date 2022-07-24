@@ -19,16 +19,7 @@ function Popup(props) {
           }
         });
   }
-  // let maxValue =
-  //   selected === "buy"
-  //     ? state.wallet / state.currentSelected.price
-  //     : selected === null
-  //     ? 0
-  //     : state.currentHoldingArr.map((e) => {
-  //         if (e.coinName === state.currentSelected.coinName) {
-  //           return e.count;
-  //         }
-  //       });
+ 
 
   let ref = useRef();
 
