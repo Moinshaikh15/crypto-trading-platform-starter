@@ -10,9 +10,7 @@ function Popup(props) {
 
   function getMaxValue() {
     if (selected === "buy") {
-      if (state.wallet !== 0) {
-        return state.wallet / state.currentSelected.price;
-      }
+      return state.wallet !== 0 ? state.wallet / state.currentSelected.price : 0;
     } else {
       let foundCount = state.currentHoldingArr.find((e) => {
         if (e.coinName === state.currentSelected.coinName) {
