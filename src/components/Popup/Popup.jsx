@@ -86,9 +86,9 @@ function Popup(props) {
             </div>
           </div>
 
-          <button style={{ opacity: inputValue <= getMaxValue() ? '1' : '0.5' }}
+          <button style={{ opacity: (inputValue <= getMaxValue() && 0 !== getMaxValue()) ? '1' : '0.5' }}
             onClick={() => {
-              if ((state.transactionArr.find((ele) => ele.coinName === state.currentSelected.coinName) && inputValue <= getMaxValue()) || (selected === "buy" && state.wallet >= inputValue * state.currentSelected.price)) {
+              if (((state.transactionArr.find((ele) => ele.coinName === state.currentSelected.coinName) && inputValue <= getMaxValue()) || (selected === "buy" && state.wallet >= inputValue * state.currentSelected.price)) && getMaxValue() !== 0) {
                 dispatch({ type: selected, payload: { coinName: state.currentSelected.coinName, price: state.currentSelected.price, time: new Date().toLocaleString(), count: inputValue, typeofTransaction: selected } });
                 dispatch({ type: "popUp-toggle" });
               }

@@ -7,9 +7,13 @@ export default function CurrHoldingCard(props) {
   let profitLoss = name.price - props.price;
   return (
     <div className="curr-HoldingCard">
+      <img src={name.src} alt="" />
+
       <h5>
         {props.name}: {props.count}
       </h5>
+
+
       <p>
         Total Paid: ${props.price * props.count} , Current Value: ${name.price * props.count}
       </p>
