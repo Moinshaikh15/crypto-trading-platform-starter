@@ -7,7 +7,7 @@ export default function Transaction() {
   let { state } = useContext(coinData);
   return (
     <div className="Tarnsaction-container">
-      <h2 style={{ fontFamily: "Squada One" }}>Transactions</h2>
+      <h3 style={{ fontFamily: "Squada One",letterSpacing:'3px' }}>Transactions</h3>
       <div className="TranCard-container">
         {state.transactionArr.length === 0 ? (
           <p>No Transactions Yet...</p>

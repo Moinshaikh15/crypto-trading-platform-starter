@@ -11,21 +11,29 @@
   color: whitesmoke;
 }
 
+.currholding-container>h3 {
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+
+
 .currholding-cardscontainer {
   display: flex;
   flex-direction: column;
   gap: 15px;
   overflow-y: auto;
   margin-top: 10px;
+  padding: 10px;
 }
 
 .curr-HoldingCard {
   display: flex;
+  width: 400px;
   flex-direction: column;
   gap: 5px;
   padding: 10px;
   margin-right: 5px;
   border-radius: 10px;
-  box-shadow: 1px 1px 3px 1px #1a212b70;
+  box-shadow: 0px 2px 6px 1px #09090970;;
   background-color: #13181f;
 }

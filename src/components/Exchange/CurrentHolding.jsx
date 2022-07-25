@@ -7,7 +7,7 @@ export default function CurrentHolding() {
 
   return (
     <div className="currholding-container">
-      <h2 style={{  fontFamily: "Squada One"}}>Current Holdings</h2>
+      <h3 style={{  fontFamily: "Squada One"}}>Current Holdings</h3>
       <div className="currholding-cardscontainer">
         {state.currentHoldingArr.length===0?
         <p>Go Buy Something 🚀</p>

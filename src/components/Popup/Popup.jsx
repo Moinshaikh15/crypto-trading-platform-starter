@@ -94,7 +94,7 @@ function Popup(props) {
               }
             }}
           >
-            {selected === "sell" ? "Sell" : "Buy"}
+            {selected === "sell" ? "SELL" : "BUY"}
           </button>
         </>
       )}
