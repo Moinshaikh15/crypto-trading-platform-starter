@@ -1,12 +1,13 @@
 import "./styles.css";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import coinData from "../../contexts/coinData";
 
-function Popup(props) {
+function Popup() {
   let { state, dispatch } = useContext(coinData);
+  let selected = state.selected
+  let inputValue = state.inputValue
 
-  let [selected, setSelected] = useState("buy");
-  let [inputValue, setInputValue] = useState();
+
 
   function getMaxValue() {
     if (selected === "buy") {
@@ -16,6 +17,7 @@ function Popup(props) {
         if (e.coinName === state.currentSelected.coinName) {
           return e.count;
         }
+        return e
       });
 
       return foundCount ? foundCount.count : 0;
@@ -35,7 +37,12 @@ function Popup(props) {
             <h4>
               {selected === "sell" ? "Sell" : "Buy"} {state.currentSelected.coinName}
             </h4>
-            <h4 onClick={() => dispatch({ type: "popUp-toggle" })} style={{ cursor: "pointer" }}>
+            <h4 onClick={() => {
+              dispatch({ type: "popUp-toggle" })
+              ref.current.value = '';
+              dispatch({ type: 'update-selected', payload: 'buy' })
+
+            }} style={{ cursor: "pointer" }}>
               ☓
             </h4>
           </div>
@@ -43,14 +50,14 @@ function Popup(props) {
           <p>Current Price:${state.currentSelected.price}</p>
 
           <div className="input-container">
-            <input ref={ref} type="number" name="input" id="input" onChange={() => setInputValue(ref.current.value)} required />
+            <input ref={ref} type="number" name="input" id="input" onChange={() => dispatch({ type: 'update-inputValue', payload: ref.current.value })} required />
             {inputValue !== undefined ? <p>You will {selected === 'buy' ? 'Pay' : 'Receive'} {state.currentSelected.price * inputValue}</p> : ''}
 
             <label
               htmlFor="input"
               onClick={() => {
                 ref.current.value = getMaxValue();
-                setInputValue(ref.current.value);
+                dispatch({ type: 'update-inputValue', payload: ref.current.value })
               }}
             >
               Max {getMaxValue()}
@@ -66,7 +73,7 @@ function Popup(props) {
                 id="btn1"
                 checked={selected === "buy" ? true : false}
                 onClick={() => {
-                  setSelected("buy");
+                  dispatch({ type: 'update-selected', payload: 'buy' })
                 }}
               />
               <label htmlFor="btn1">Buy</label>
@@ -79,7 +86,7 @@ function Popup(props) {
                 id="btn2"
                 checked={selected === "buy" ? false : true}
                 onClick={() => {
-                  setSelected("sell");
+                  dispatch({ type: 'update-selected', payload: 'sell' })
                 }}
               />
               <label htmlFor="btn2">Sell</label>
@@ -92,6 +99,7 @@ function Popup(props) {
                 dispatch({ type: selected, payload: { coinName: state.currentSelected.coinName, price: state.currentSelected.price, time: new Date().toLocaleString(), count: inputValue, typeofTransaction: selected } });
                 dispatch({ type: "popUp-toggle" });
               }
+              ref.current.value = '';
             }}
           >
             {selected === "sell" ? "SELL" : "BUY"}

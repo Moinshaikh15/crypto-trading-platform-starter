@@ -11,6 +11,7 @@ function CoinCard(props) {
       onClick={() => {
         coinDataContext.dispatch({ type: "UpdateSelected", payload: { price: props.coinInfo[1].price, coinName: props.coinInfo[1].name } });
         coinDataContext.dispatch({ type: "popUp-toggle" });
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
       }}
     >
       <div className="outlineSymbol">

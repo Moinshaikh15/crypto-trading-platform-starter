@@ -45,13 +45,17 @@ function reducer(state, action) {
       return { ...state, popupRef: copyRef };
     case "UpdateSelected":
       return { ...state, currentSelected: JSON.parse(JSON.stringify(action.payload)) };
+    case 'update-selected':
+      return { ...state, selected: action.payload }
+    case 'update-inputValue':
+      return { ...state, inputValue: action.payload }
     default:
       return { ...state };
   }
 }
 
 function UserInterface() {
-  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfolio: 0, coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false, currentSelected: null, transactionArr: [], currentHoldingArr: [] });
+  let [state, dispatch] = useReducer(reducer, { wallet: 100, portfolio: 0, coinNames: ["bitcoin", "ethereum", "cardano", "solana"], coinsInfo: false, popupRef: false, currentSelected: null, transactionArr: [], currentHoldingArr: [], selected: 'buy', inputValue: '' });
 
   async function getData() {
     console.log("ping");
@@ -81,6 +85,7 @@ function UserInterface() {
     return () => {
       clearInterval(getInterval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // console.log(state.coinsInfo);
